@@ -13,5 +13,8 @@
     "sqlite3": "^5.1.7"
   },
   "author": "Your Name",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  }
 }
