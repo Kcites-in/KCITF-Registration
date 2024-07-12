@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const db = require('../server/db/database');
+const db = require('../../server/db/database');
 const sanitizeHtml = require('sanitize-html');
 const path = require('path');
 
