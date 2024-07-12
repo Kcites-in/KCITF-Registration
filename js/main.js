@@ -98,7 +98,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
       eventDay2: day2Event
   };
 
-  fetch('/register', {
+  fetch('/server/routes/register', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
