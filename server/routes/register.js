@@ -65,5 +65,19 @@ router.post('/register', async (req, res) => {
     }
 });
 
+router.get('/download-db', (req, res) => {
+    const secret = req.query.secret;
+  
+    if (secret !== process.env.DOWNLOAD_SECRET) {
+      return res.status(403).send('Forbidden');
+    }
+  
+    const dbPath = path.join(__dirname, '../db/database.sqlite');
+    res.download(dbPath, 'database.sqlite', (err) => {
+      if (err) {
+        res.status(500).send(err.message);
+      }
+    });
+  });
 module.exports = router;
 
