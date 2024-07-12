@@ -108,7 +108,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
   .then(response => response.json())
   .then(data => {
       if (data.id) {
-          alert('Registration successful! Your ID is KCITF' + data.id);
+          alert('Registration successful! Your ID is ' + data.id);
           document.getElementById('registrationForm').reset();
       } else {
           alert('Registration failed: ' + data.message);
