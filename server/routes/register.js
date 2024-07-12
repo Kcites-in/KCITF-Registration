@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db/database');
 const sanitizeHtml = require('sanitize-html');
+const path = require('path');
 
 // Function to generate KCITF ID
 const generateID = async () => {
