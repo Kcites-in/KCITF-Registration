@@ -3,7 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./server/db/database');
-const registerRoute = require('./server/routes/register');
+const registerRoute = require('./js/register');
 require('dotenv').config();
 
 const app = express();
