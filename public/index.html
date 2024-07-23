@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech Fest Registration</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>K.C.International Youth Tech Fest Registration</title>
+  
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container mt-5">
-    <h1 class="text-center">Tech Fest Registration</h1>
+    <img src="public/css/logo.png" alt="Event Logo" class="logo"> 
+    <h1 class="text-center">K.C.International Youth Tech Fest Registration</h1>
+    <p><strong>ALL DETAILS IN CAPITAL</strong> </p>
     <form id="registrationForm">
       <div class="form-group">
         <label for="name">Name:</label>
@@ -24,6 +27,15 @@
         <input type="email" class="form-control" id="email" required>
       </div>
       <div class="form-group">
+        <label for="school">School:</label>
+        <select class="form-control" id="school" name="school" required>
+          <option value="">Select your school</option>
+            <option value="fwaf">fwaf</option>
+            <option value="fwaect">fwaf</option>
+            <option value="eafaef">fwafl</option>
+        </select>
+      </div>
+      <div class="form-group">
         <label for="class">Class:</label>
         <select class="form-control" id="class" required>
           <option value="">Select Class</option>
@@ -36,12 +48,6 @@
           <option value="10th">10th</option>
           <option value="11th">11th</option>
           <option value="12th">12th</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="section">Section:</label>
-        <select class="form-control" id="section" required>
-          <option value="">Select Section</option>
         </select>
       </div>
       <div class="form-group">

@@ -1,31 +1,14 @@
 document.getElementById('class').addEventListener('change', function() {
   const classValue = this.value;
-  const sectionSelect = document.getElementById('section');
+ 
   const day1EventSelect = document.getElementById('day1Event');
   const day2EventSelect = document.getElementById('day2Event');
 
   // Reset options
-  sectionSelect.innerHTML = '<option value="">Select Section</option>';
   day1EventSelect.innerHTML = '<option value="">Select Day 1 Event (Optional)</option>';
   day2EventSelect.innerHTML = '<option value="">Select Day 2 Event (Optional)</option>';
 
-  // Populate sections based on class
-  if (classValue === '11th' || classValue === '12th') {
-      ['A', 'B', 'C', 'D'].forEach(section => {
-          const option = document.createElement('option');
-          option.value = section;
-          option.textContent = section;
-          sectionSelect.appendChild(option);
-      });
-  } else {
-      ['A', 'B', 'C', 'D', 'E'].forEach(section => {
-          const option = document.createElement('option');
-          option.value = section;
-          option.textContent = section;
-          sectionSelect.appendChild(option);
-      });
-  }
-
+  
   // Populate events based on class for Day 1 and Day 2 separately
   const eventOptionsDay1 = {
       '4th': ['Digital Art'],
@@ -70,6 +53,7 @@ document.getElementById('class').addEventListener('change', function() {
   }
 });
 
+
 document.getElementById('registrationForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
@@ -77,12 +61,12 @@ document.getElementById('registrationForm').addEventListener('submit', function(
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
+  const schoolDropdown = document.getElementById('school').value;
   const classValue = document.getElementById('class').value;
-  const section = document.getElementById('section').value;
   const day1Event = document.getElementById('day1Event').value;
   const day2Event = document.getElementById('day2Event').value;
 
-  if (!name || !phone || !email || !classValue || !section) {
+  if (!name || !phone || !email || !schoolDropdown || !classValue ) {
       alert('Please fill out all required fields.');
       return;
   }
@@ -92,8 +76,8 @@ document.getElementById('registrationForm').addEventListener('submit', function(
       name: name,
       phone: phone,
       email: email,
+      school:schoolDropdown,
       class: classValue,
-      section: section,
       eventDay1: day1Event,
       eventDay2: day2Event
   };

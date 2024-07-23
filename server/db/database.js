@@ -55,9 +55,9 @@ async function initializeDatabase() {
         id INT PRIMARY KEY AUTO_INCREMENT,
         name VARCHAR(255) NOT NULL,
         phone_number VARCHAR(255) NOT NULL,
+        school VARCHAR(255) NOT NULL,
         email_id VARCHAR(255) NOT NULL,
         class VARCHAR(255) NOT NULL,
-        section VARCHAR(255) NOT NULL,
         event_day1 VARCHAR(255),
         event_day2 VARCHAR(255),
         registration_id VARCHAR(255) NOT NULL
