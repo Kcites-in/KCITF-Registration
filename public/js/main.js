@@ -103,3 +103,31 @@ document.getElementById('registrationForm').addEventListener('submit', function(
       alert('An error occurred during registration. Please try again.');
   });
 });
+// main.js
+document.addEventListener("DOMContentLoaded", function() {
+    const formGroups = document.querySelectorAll(".form-group");
+    formGroups.forEach((group, index) => {
+      if (index > 0) {
+        group.classList.add("hidden");
+      }
+    });
+  
+    const inputs = document.querySelectorAll(".form-control");
+    inputs.forEach((input, index) => {
+      input.addEventListener("input", function() {
+        if (input.value.trim() !== "") {
+          if (index === 4) { // Adjusted index to match the "Class" field
+            formGroups[5].classList.remove("hidden");
+            formGroups[5].classList.add("faded-in");
+            formGroups[6].classList.remove("hidden");
+            formGroups[6].classList.add("faded-in");
+          } else if (index < formGroups.length - 1 && index !== 4) {
+            formGroups[index + 1].classList.remove("hidden");
+            formGroups[index + 1].classList.add("faded-in");
+          }
+        }
+      });
+    });
+  });
+  
+  

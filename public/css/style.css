@@ -1,7 +1,21 @@
-/* styles.css */
+/* style.css */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.faded-in {
+  animation: fadeIn 1s forwards;
+}
+
 body {
   background-color: #f4f4f9;
   font-family: 'Arial', sans-serif;
+  animation: fadeIn 2s ease-in;
 }
 
 .container {
@@ -11,11 +25,13 @@ body {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  animation: slideIn 1s ease-out;
 }
 
 h1 {
   color: #333;
   margin-bottom: 20px;
+  /*animation: zoomIn 1s ease-out;*/
 }
 
 p {
@@ -24,20 +40,24 @@ p {
 
 .form-group label {
   color: #555;
+  animation: fadeInUp 1s ease-in;
 }
 
 .form-control {
   border-radius: 4px;
+  animation: fadeInUp 1s ease-in;
 }
 
 .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
+  animation: fadeInUp 1s ease-in;
 }
 
 footer {
   margin-top: 20px;
   color: #555;
+  animation: fadeIn 2s ease-in;
 }
 
 .logo {
@@ -45,4 +65,31 @@ footer {
   margin: 0 auto 20px;
   width: 150px; /* Adjust as needed */
   height: auto;
+  animation: rotateIn 2s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes rotateIn {
+  from { transform: rotate(-360deg); opacity: 0; }
+  to { transform: rotate(0); opacity: 1; }
 }
