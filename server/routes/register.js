@@ -27,7 +27,7 @@ const generateID = async () => {
 };
 
 router.post('/register', async (req, res) => {
-  const { name, phone, email, school, class: cls, section, eventDay1, eventDay2 } = req.body;
+  const { name, phone, email, school, class: cls, eventDay1, eventDay2 } = req.body;
 
   // Sanitize input data
   const sanitizedData = {
@@ -49,7 +49,7 @@ router.post('/register', async (req, res) => {
     const connection = await db.getConnection();
     try {
       await connection.query(`INSERT INTO participants (name, phone_number, email_id, school, class, event_day1, event_day2, registration_id) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
         [sanitizedData.name, sanitizedData.phone, sanitizedData.email, sanitizedData.school, sanitizedData.class,
           sanitizedData.event_day1, sanitizedData.event_day2, registrationID]);
       console.log('New registration inserted with ID:', registrationID);
