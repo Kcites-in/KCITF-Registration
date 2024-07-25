@@ -26,10 +26,10 @@ document.getElementById('class').addEventListener('change', function() {
       '4th': ['Keystrike Clash'],
       '5th': ['Keystrike Clash'],
       '6th': ['Scratch Symphony'],
-      '7th': ['Scratch Symphony','Celestial Cinematics'],
-      '8th': ['Scratch Symphony','Celestial Cinematics'],
-      '9th': ['Elite Showdown (Valorant)','Celestial Cinematics'],
-      '10th': ['Elite Showdown (Valorant)','Celestial Cinematics'],
+      '7th': ['Scratch Symphony','Celestial Cinematics',"Smaqq Quiz"],
+      '8th': ['Scratch Symphony','Celestial Cinematics',"Smaqq Quiz"],
+      '9th': ['Elite Showdown (Valorant)','Celestial Cinematics',"Smaqq Quiz"],
+      '10th': ['Elite Showdown (Valorant)','Celestial Cinematics',"Smaqq Quiz"],
       '11th': ['Elite Showdown (Valorant)'],
       '12th': ['Elite Showdown (Valorant)']
   };
@@ -60,13 +60,15 @@ document.getElementById('registrationForm').addEventListener('submit', function(
   // Form validation
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
+  const tic = document.getElementById('tic').value.trim();
+  const ticp = document.getElementById('ticp').value.trim();
   const email = document.getElementById('email').value.trim();
   const schoolDropdown = document.getElementById('school').value;
   const classValue = document.getElementById('class').value;
   const day1Event = document.getElementById('day1Event').value;
   const day2Event = document.getElementById('day2Event').value;
 
-  if (!name || !phone || !email || !schoolDropdown || !classValue ) {
+  if (!name || !phone || !email || !schoolDropdown || !tic || !ticp || !classValue ) {
       alert('Please fill out all required fields.');
       return;
   }
@@ -76,7 +78,9 @@ document.getElementById('registrationForm').addEventListener('submit', function(
       name: name,
       phone: phone,
       email: email,
-      school:schoolDropdown,
+      school: schoolDropdown,
+      tic: tic,
+      ticp: ticp,
       class: classValue,
       eventDay1: day1Event,
       eventDay2: day2Event
@@ -116,12 +120,12 @@ document.addEventListener("DOMContentLoaded", function() {
     inputs.forEach((input, index) => {
       input.addEventListener("input", function() {
         if (input.value.trim() !== "") {
-          if (index === 4) { // Adjusted index to match the "Class" field
-            formGroups[5].classList.remove("hidden");
-            formGroups[5].classList.add("faded-in");
-            formGroups[6].classList.remove("hidden");
-            formGroups[6].classList.add("faded-in");
-          } else if (index < formGroups.length - 1 && index !== 4) {
+          if (index === 6) { // Adjusted index to match the "Class" field
+            formGroups[7].classList.remove("hidden");
+            formGroups[7].classList.add("faded-in");
+            formGroups[8].classList.remove("hidden");
+            formGroups[8].classList.add("faded-in");
+          } else if (index < formGroups.length - 1 && index !== 6) {
             formGroups[index + 1].classList.remove("hidden");
             formGroups[index + 1].classList.add("faded-in");
           }

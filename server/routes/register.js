@@ -27,7 +27,7 @@ const generateID = async () => {
 };
 
 router.post('/register', async (req, res) => {
-  const { name, phone, email, school, class: cls, eventDay1, eventDay2 } = req.body;
+  const { name, phone, email, school, tic, ticp, class: cls, eventDay1, eventDay2 } = req.body;
 
   // Sanitize input data
   const sanitizedData = {
@@ -36,6 +36,8 @@ router.post('/register', async (req, res) => {
     email: sanitizeHtml(email),
     school: sanitizeHtml(school),
     class: sanitizeHtml(cls),
+    tic: sanitizeHtml(tic),
+    ticp: sanitizeHtml(ticp),
 
     event_day1: sanitizeHtml(eventDay1),
     event_day2: sanitizeHtml(eventDay2)
@@ -48,9 +50,9 @@ router.post('/register', async (req, res) => {
     // Save to database
     const connection = await db.getConnection();
     try {
-      await connection.query(`INSERT INTO participants (name, phone_number, email_id, school, class, event_day1, event_day2, registration_id) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-        [sanitizedData.name, sanitizedData.phone, sanitizedData.email, sanitizedData.school, sanitizedData.class,
+      await connection.query(`INSERT INTO participants (name, phone_number, email_id, school, teacher_ic, teacher_ic_phone, class, event_day1, event_day2, registration_id) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [sanitizedData.name, sanitizedData.phone, sanitizedData.email, sanitizedData.school, sanitizedData.tic, sanitizedData.ticp, sanitizedData.class,
           sanitizedData.event_day1, sanitizedData.event_day2, registrationID]);
       console.log('New registration inserted with ID:', registrationID);
       res.status(200).json({ id: registrationID });
