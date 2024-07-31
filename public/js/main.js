@@ -1,13 +1,28 @@
 document.getElementById('class').addEventListener('change', function() {
   const classValue = this.value;
- 
+  const sectionSelect = document.getElementById('section');
   const day1EventSelect = document.getElementById('day1Event');
   const day2EventSelect = document.getElementById('day2Event');
 
   // Reset options
   day1EventSelect.innerHTML = '<option value="">Select Day 1 Event (Optional)</option>';
   day2EventSelect.innerHTML = '<option value="">Select Day 2 Event (Optional)</option>';
-
+  sectionSelect.innerHTML = '<option value="">Select Section</option>';
+  if (classValue === '11th' || classValue === '12th') {
+    ['A', 'B', 'C', 'D'].forEach(section => {
+      const option = document.createElement('option');
+      option.value = section;
+      option.textContent = section;
+      sectionSelect.appendChild(option);
+    });
+  } else {
+    ['A', 'B', 'C', 'D', 'E'].forEach(section => {
+      const option = document.createElement('option');
+      option.value = section;
+      option.textContent = section;
+      sectionSelect.appendChild(option);
+    });
+  }
   
   // Populate events based on class for Day 1 and Day 2 separately
   const eventOptionsDay1 = {
@@ -60,15 +75,13 @@ document.getElementById('registrationForm').addEventListener('submit', function(
   // Form validation
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
-  const tic = document.getElementById('tic').value.trim();
-  const ticp = document.getElementById('ticp').value.trim();
   const email = document.getElementById('email').value.trim();
-  const schoolDropdown = document.getElementById('school').value;
   const classValue = document.getElementById('class').value;
+  const section = document.getElementById('section').value;
   const day1Event = document.getElementById('day1Event').value;
   const day2Event = document.getElementById('day2Event').value;
 
-  if (!name || !phone || !email || !schoolDropdown || !tic || !ticp || !classValue ) {
+  if (!name || !phone || !email  || !classValue || !section ) {
       alert('Please fill out all required fields.');
       return;
   }
@@ -78,60 +91,30 @@ document.getElementById('registrationForm').addEventListener('submit', function(
       name: name,
       phone: phone,
       email: email,
-      school: schoolDropdown,
-      tic: tic,
-      ticp: ticp,
       class: classValue,
+      section: section,
       eventDay1: day1Event,
       eventDay2: day2Event
   };
 
-  fetch('register', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
+  fetch('/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
   })
   .then(response => response.json())
   .then(data => {
-      if (data.id) {
-          alert('Registration successful! Your ID is ' + data.id);
-          document.getElementById('registrationForm').reset();
-      } else {
-          alert('Registration failed: ' + data.message);
-      }
+    if (data.id) {
+      alert('Registration successful! ');
+      document.getElementById('registrationForm').reset();
+    } else {
+      alert('Registration failed: ' + (data.message || 'Unknown error'));
+    }
   })
   .catch(error => {
-      console.error('Error:', error);
-      alert('An error occurred during registration. Please try again.');
+    console.error('Error:', error);
+    alert('An error occurred during registration. Please try again.');
   });
 });
-// main.js
-document.addEventListener("DOMContentLoaded", function() {
-    const formGroups = document.querySelectorAll(".form-group");
-    formGroups.forEach((group, index) => {
-      if (index > 0) {
-        group.classList.add("hidden");
-      }
-    });
-  
-    const inputs = document.querySelectorAll(".form-control");
-    inputs.forEach((input, index) => {
-      input.addEventListener("input", function() {
-        if (input.value.trim() !== "") {
-          if (index === 6) { // Adjusted index to match the "Class" field
-            formGroups[7].classList.remove("hidden");
-            formGroups[7].classList.add("faded-in");
-            formGroups[8].classList.remove("hidden");
-            formGroups[8].classList.add("faded-in");
-          } else if (index < formGroups.length - 1 && index !== 6) {
-            formGroups[index + 1].classList.remove("hidden");
-            formGroups[index + 1].classList.add("faded-in");
-          }
-        }
-      });
-    });
-  });
-  
-  

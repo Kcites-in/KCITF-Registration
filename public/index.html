@@ -25,10 +25,6 @@
       - <strong>Ashish Mahajan</strong>: 9906171359<br>
       </p>
     <form id="registrationForm">
-      <div class="form-group">
-        <label for="school"><u>School:</u></label>
-        <input type="text" class="form-control" id="school" required>
-      </div>
       <div class="form-group hidden">
         <label for="name"><u>Student Name:</u></label>
         <input type="text" class="form-control" id="name" required>
@@ -40,14 +36,6 @@
       <div class="form-group hidden">
         <label for="email"><u>Student Email ID:</u></label>
         <input type="email" class="form-control" id="email" required>
-        <div class="form-group hidden">
-          <label for="tic"><u>Name of the Teacher Incharge</u></label>
-          <input type="text" class="form-control" id="tic" required>
-        </div>
-        <div class="form-group hidden">
-          <label for="ticp"><u>Phone Number of the Teacher Incharge</u></label>
-          <input type="tel" class="form-control" id="ticp" required>
-        </div>
       <div class="form-group hidden">
         <label for="class"><u>Class:</u></label>
         <select class="form-control" id="class" required>
@@ -63,6 +51,12 @@
           <option value="12th">12th</option>
         </select>
       </div>
+    </div>
+    <div class="form-group hidden">
+      <label for="section">Section:</label>
+      <select class="form-control" id="section" required>
+        <option value="">Select Section</option>
+      </select>
     </div>
       <div class="form-group hidden">
         <label for="day1Event"><u>Day 1 Event:</u></label>
